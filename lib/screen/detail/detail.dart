@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_id/app/models/news_model.dart';
 import 'package:news_id/components/time_format.dart';
+import 'package:news_id/components/url_launcher.dart';
 
 import '../../components/colors.dart';
 
@@ -80,7 +81,9 @@ class DetailScreen extends StatelessWidget {
           height: 5.0,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            openUrl(articles!.url!);
+          },
           child: const Text('Read more',
               style: TextStyle(
                   fontSize: 15.0,
