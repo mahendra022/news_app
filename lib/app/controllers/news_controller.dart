@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 
 class NewsController extends GetxController {
   List<Articles>? _popularty;
+  List<Articles>? _news;
 
   /// Fatch [by Popularity]
   void fatchPopularity() async {
@@ -20,8 +21,25 @@ class NewsController extends GetxController {
     }
   }
 
+  /// Fatch [News]
+  void fatchNews() async {
+    var url = Uri.parse(dotenv.get('API_URL') +
+        'top-headlines?country=us&category=business&apiKey=' +
+        dotenv.get('KEY'));
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      _news = NewsModel.fromJson(json.decode(response.body)).articels;
+      update();
+    }
+  }
+
   /// Getter [popularity]
   List<Articles>? get popularity {
     return _popularty;
+  }
+
+  /// Getter [news]
+  List<Articles>? get news {
+    return _news;
   }
 }

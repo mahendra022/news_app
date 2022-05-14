@@ -7,6 +7,7 @@ import '../../app/controllers/news_controller.dart';
 import '../../app/databases/db_app.dart';
 import '../../components/widget/category_tile.dart';
 import '../../components/widget/news_tile.dart';
+import '../../components/widget/popularity_tile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -125,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return NewsTile(news: controller.popularity![index]);
+                  return PopularityTile(news: controller.popularity![index]);
                 },
               ));
         },
@@ -166,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: 3,
               shrinkWrap: true,
               padding: const EdgeInsets.only(),
-              physics: const NeverScrollableScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return CategoryTile(category: dataCategory1[index]);
@@ -194,6 +195,62 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  content() {
+    return Container(
+      margin: const EdgeInsets.only(top: 20.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Your news',
+                style: TextStyle(
+                    color: ColorApp.color2,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w700),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'See all',
+                  style: TextStyle(
+                      color: Colors.black38,
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w600),
+                ),
+              )
+            ],
+          ),
+          GetBuilder<NewsController>(
+            init: NewsController(),
+            initState: (_) {
+              Get.put(NewsController()).fatchNews();
+            },
+            builder: (controller) {
+              if (controller.news == null) {
+                controller.fatchNews();
+                return const SizedBox();
+              }
+              return SizedBox(
+                  height: 200.0,
+                  child: ListView.builder(
+                    itemCount: 10,
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.only(),
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      return NewsTile(news: controller.news![index]);
+                    },
+                  ));
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -203,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
         margin: const EdgeInsets.only(top: 60.0, left: 20.0, right: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [topBar(), slidebar(), categories()],
+          children: [topBar(), slidebar(), categories(), content()],
         ),
       )),
     );
