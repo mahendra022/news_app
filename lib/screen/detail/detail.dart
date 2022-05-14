@@ -162,7 +162,11 @@ class DetailScreen extends StatelessWidget {
                     borderRadius:
                         const BorderRadius.all(Radius.circular(100.0)),
                   ),
-                  child: const Icon(Icons.share_outlined, size: 22.0),
+                  child: Icon(
+                    Icons.share_outlined,
+                    size: 22.0,
+                    color: ColorApp.main,
+                  ),
                 ),
                 Container(
                   padding: const EdgeInsets.all(8.0),
@@ -171,7 +175,8 @@ class DetailScreen extends StatelessWidget {
                     borderRadius:
                         const BorderRadius.all(Radius.circular(100.0)),
                   ),
-                  child: const Icon(Icons.star_border, size: 22.0),
+                  child: Icon(Icons.star_border,
+                      size: 22.0, color: Colors.amber[700]),
                 ),
                 Container(
                   padding: const EdgeInsets.all(8.0),
@@ -180,7 +185,11 @@ class DetailScreen extends StatelessWidget {
                     borderRadius:
                         const BorderRadius.all(Radius.circular(100.0)),
                   ),
-                  child: const Icon(Icons.more_vert, size: 22.0),
+                  child: Icon(
+                    Icons.more_vert,
+                    size: 22.0,
+                    color: Colors.pink[500],
+                  ),
                 )
               ],
             ),
