@@ -162,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           SizedBox(
-            height: 50.0,
+            height: 45.0,
             child: ListView.builder(
               itemCount: 3,
               shrinkWrap: true,
@@ -175,10 +175,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           const SizedBox(
-            height: 5.0,
+            height: 10.0,
           ),
           SizedBox(
-            height: 50.0,
+            height: 45.0,
             child: ListView.builder(
               itemCount: 4,
               shrinkWrap: true,

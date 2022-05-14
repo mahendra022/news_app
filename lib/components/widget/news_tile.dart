@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:news_id/components/colors.dart';
 import '../../app/models/news_model.dart';
-
-final format = DateFormat('HH:mm a');
+import '../time_format.dart';
 
 class NewsTile extends StatelessWidget {
   const NewsTile({Key? key, this.news}) : super(key: key);
@@ -77,7 +75,7 @@ class NewsTile extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.only(bottom: 10.0),
                           child: Text(
-                            format
+                            format1
                                 .format(DateTime.parse(news!.publishedAt!))
                                 .toString(),
                             textAlign: TextAlign.left,
