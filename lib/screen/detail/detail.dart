@@ -52,6 +52,12 @@ class DetailScreen extends StatelessWidget {
             child: Image.network(
               articles!.urlToImage ??
                   'https://www.ryanhart.org/img/featured_journal_empty.jpg',
+              errorBuilder: ((context, error, stackTrace) {
+                return Image.network(
+                  'https://www.ryanhart.org/img/featured_journal_empty.jpg',
+                  fit: BoxFit.fitHeight,
+                );
+              }),
               fit: BoxFit.fitHeight,
             ),
           ),

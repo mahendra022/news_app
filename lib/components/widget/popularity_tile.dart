@@ -31,8 +31,15 @@ class PopularityTile extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                 child: Image.network(
-                  news!.urlToImage!,
-                  fit: BoxFit.cover,
+                  news!.urlToImage ??
+                      'https://www.ryanhart.org/img/featured_journal_empty.jpg',
+                  errorBuilder: ((context, error, stackTrace) {
+                    return Image.network(
+                      'https://www.ryanhart.org/img/featured_journal_empty.jpg',
+                      fit: BoxFit.fitHeight,
+                    );
+                  }),
+                  fit: BoxFit.fitHeight,
                 ),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_id/app/models/category_model.dart';
+import 'package:news_id/screen/selection/selection.dart';
 
 class CategoryTile extends StatelessWidget {
   const CategoryTile({Key? key, this.category}) : super(key: key);
@@ -10,11 +11,13 @@ class CategoryTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //       builder: (context) => ProductDetail(product: product)),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => SelectionScreen(
+                    category: category,
+                  )),
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(right: 10.0),
