@@ -11,7 +11,7 @@ class NewsController extends GetxController {
   /// Fatch [by Popularity]
   void fatchPopularity() async {
     var url = Uri.parse(dotenv.get('API_URL') +
-        'everything?q=apple&from=2022-05-13&to=2022-05-13&sortBy=popularity&apiKey=' +
+        'everything?q=business&from=2022-05-14&to=2022-05-14&sortBy=popularity&apiKey=' +
         dotenv.get('KEY'));
     var response = await http.get(url);
     if (response.statusCode == 200) {

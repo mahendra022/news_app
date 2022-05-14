@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_id/components/colors.dart';
 import '../../app/models/news_model.dart';
 
 class NewsTile extends StatelessWidget {
@@ -18,12 +17,12 @@ class NewsTile extends StatelessWidget {
         // );
       },
       child: Container(
-        width: 140,
+        width: 200,
         margin: const EdgeInsets.only(right: 15.0),
         child: Stack(
           children: [
             SizedBox(
-              height: 180.0,
+              height: 200.0,
               width: double.infinity,
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(10.0)),
@@ -36,8 +35,8 @@ class NewsTile extends StatelessWidget {
             Positioned(
               bottom: 15.0,
               child: Container(
-                width: 130.0,
-                margin: const EdgeInsets.only(left: 5.0, right: 5.0),
+                width: 180.0,
+                margin: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text(
                   news!.title!,
                   maxLines: 3,

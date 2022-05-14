@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:news_id/components/colors.dart';
 
 import '../../app/controllers/news_controller.dart';
+import '../../app/databases/db_app.dart';
+import '../../components/widget/category_tile.dart';
 import '../../components/widget/news_tile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -102,8 +104,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   slidebar() {
     return Container(
-      height: 180.0,
-      margin: const EdgeInsets.only(top: 20.0),
+      height: 150.0,
+      margin: const EdgeInsets.only(top: 30.0),
       child: GetBuilder<NewsController>(
         init: NewsController(),
         initState: (_) {
@@ -131,6 +133,67 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  categories() {
+    return Container(
+      margin: const EdgeInsets.only(top: 20.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Hot topics',
+                style: TextStyle(
+                    color: ColorApp.color2,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w700),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'See all',
+                  style: TextStyle(
+                      color: Colors.black38,
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w600),
+                ),
+              )
+            ],
+          ),
+          SizedBox(
+            height: 50.0,
+            child: ListView.builder(
+              itemCount: 3,
+              shrinkWrap: true,
+              padding: const EdgeInsets.only(),
+              physics: const NeverScrollableScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return CategoryTile(category: dataCategory1[index]);
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 5.0,
+          ),
+          SizedBox(
+            height: 50.0,
+            child: ListView.builder(
+              itemCount: 4,
+              shrinkWrap: true,
+              padding: const EdgeInsets.only(),
+              physics: const BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return CategoryTile(category: dataCategory2![index]);
+              },
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
         margin: const EdgeInsets.only(top: 60.0, left: 20.0, right: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [topBar(), slidebar()],
+          children: [topBar(), slidebar(), categories()],
         ),
       )),
     );
