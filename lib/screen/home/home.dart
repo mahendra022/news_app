@@ -1,6 +1,10 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:news_id/components/colors.dart';
+
+import '../../app/controllers/news_controller.dart';
+import '../../components/widget/news_tile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -96,6 +100,37 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  slidebar() {
+    return Container(
+      height: 180.0,
+      margin: const EdgeInsets.only(top: 20.0),
+      child: GetBuilder<NewsController>(
+        init: NewsController(),
+        initState: (_) {
+          Get.put(NewsController()).fatchPopularity();
+        },
+        builder: (controller) {
+          if (controller.popularity == null) {
+            controller.fatchPopularity();
+            return const SizedBox();
+          }
+          return SizedBox(
+              height: 130.0,
+              child: ListView.builder(
+                itemCount: 10,
+                shrinkWrap: true,
+                padding: const EdgeInsets.only(),
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return NewsTile(news: controller.popularity![index]);
+                },
+              ));
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,9 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
         margin: const EdgeInsets.only(top: 60.0, left: 20.0, right: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            topBar(),
-          ],
+          children: [topBar(), slidebar()],
         ),
       )),
     );

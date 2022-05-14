@@ -1,34 +1,18 @@
 class NewsModel {
-  List<Articles>? articles;
-
-  NewsModel({this.articles});
-
+  List<Articles>? articels;
   NewsModel.fromJson(Map<String, dynamic> json) {
     if (json['articles'] != null) {
-      articles = json['articles'].forEach((v) {
-        articles!.add(Articles.fromJson(v));
+      articels = <Articles>[];
+      json['articles'].forEach((v) {
+        articels!.add(Articles.fromJson(v));
       });
     }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (articles != null) {
-      data['articles'] = articles!.map((v) => v.toJson()).toList();
-    }
-    return data;
   }
 }
 
 class Articles {
-  Source? source,
-      author,
-      title,
-      description,
-      url,
-      urlToImage,
-      publishedAt,
-      content;
+  Source? source;
+  String? author, title, description, url, urlToImage, publishedAt, content;
 
   Articles(
       {this.source,
@@ -41,7 +25,7 @@ class Articles {
       this.content});
 
   Articles.fromJson(Map<String, dynamic> json) {
-    source = json['source'] != null ? Source.fromJson(json['source']) : null;
+    source = Source.fromJson(json['source']);
     author = json['author'];
     title = json['title'];
     description = json['description'];
