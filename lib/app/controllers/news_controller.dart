@@ -36,12 +36,6 @@ class NewsController extends GetxController {
     }
   }
 
-  @override
-  void onInit() {
-    addItems();
-    super.onInit();
-  }
-
   /// Fatch [News]
   void fatchCategories(String category) async {
     var url = Uri.parse(dotenv.get('API_URL') +
@@ -52,24 +46,6 @@ class NewsController extends GetxController {
       _category = NewsModel.fromJson(json.decode(response.body)).articels;
       update();
     }
-  }
-
-  addItems() async {
-    controller.addListener(() {
-      if (controller.position.maxScrollExtent == controller.position.pixels) {
-        for (int i = 0; i < 2; i++) {
-          controller.addListener(() {
-            if (controller.position.maxScrollExtent ==
-                controller.position.pixels) {
-              for (int i = 0; i < 3; i++) {
-                _category!.add(Articles(title: "TEST"));
-              }
-            }
-          });
-          update();
-        }
-      }
-    });
   }
 
   /// Getter [popularity]

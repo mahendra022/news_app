@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_id/components/colors.dart';
+import 'package:news_id/screen/search/search.dart';
 
 import '../../app/controllers/news_controller.dart';
 import '../../app/databases/db_app.dart';
@@ -67,7 +68,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           GestureDetector(
             onTap: () {
-              log('Search News');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SearchScreen()),
+              );
             },
             child: Container(
               height: 47,
