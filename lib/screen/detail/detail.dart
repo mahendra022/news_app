@@ -78,11 +78,16 @@ class DetailScreen extends StatelessWidget {
         const SizedBox(
           height: 15.0,
         ),
-        Text(
-          articles!.content!.substring(0, articles!.content!.indexOf('[')),
-          style: const TextStyle(
-              color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w500),
-        ),
+        articles!.content != null
+            ? Text(
+                articles!.content!
+                    .substring(0, articles!.content!.indexOf('[')),
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500),
+              )
+            : const SizedBox(),
         const SizedBox(
           height: 5.0,
         ),

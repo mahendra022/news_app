@@ -25,7 +25,7 @@ class NewsTile extends StatelessWidget {
         height: 100.0,
         width: double.infinity,
         child: Card(
-          elevation: 1,
+          elevation: 0,
           color: Colors.white,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),

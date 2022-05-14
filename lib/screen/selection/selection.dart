@@ -27,7 +27,8 @@ class SelectionScreen extends StatelessWidget {
             }
             return SizedBox(
                 child: ListView.builder(
-              itemCount: 10,
+              controller: controller.controller,
+              itemCount: controller.category!.length,
               shrinkWrap: true,
               padding: const EdgeInsets.only(),
               physics: const BouncingScrollPhysics(),
@@ -47,6 +48,14 @@ class SelectionScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'News',
+          style: TextStyle(
+              color: ColorApp.color2,
+              fontSize: 18.0,
+              fontWeight: FontWeight.w700),
+        ),
         leading: IconButton(
             icon: Icon(
               Icons.arrow_back,

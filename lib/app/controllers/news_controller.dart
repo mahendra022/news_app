@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:news_id/app/models/news_model.dart';
@@ -7,8 +8,9 @@ import 'package:http/http.dart' as http;
 
 class NewsController extends GetxController {
   List<Articles>? _popularty;
-  List<Articles>? _categoriy;
+  List<Articles>? _category;
   List<Articles>? _news;
+  ScrollController controller = ScrollController();
 
   /// Fatch [by Popularity]
   void fatchPopularity() async {
@@ -34,6 +36,12 @@ class NewsController extends GetxController {
     }
   }
 
+  @override
+  void onInit() {
+    addItems();
+    super.onInit();
+  }
+
   /// Fatch [News]
   void fatchCategories(String category) async {
     var url = Uri.parse(dotenv.get('API_URL') +
@@ -41,9 +49,27 @@ class NewsController extends GetxController {
         dotenv.get('KEY'));
     var response = await http.get(url);
     if (response.statusCode == 200) {
-      _categoriy = NewsModel.fromJson(json.decode(response.body)).articels;
+      _category = NewsModel.fromJson(json.decode(response.body)).articels;
       update();
     }
+  }
+
+  addItems() async {
+    controller.addListener(() {
+      if (controller.position.maxScrollExtent == controller.position.pixels) {
+        for (int i = 0; i < 2; i++) {
+          controller.addListener(() {
+            if (controller.position.maxScrollExtent ==
+                controller.position.pixels) {
+              for (int i = 0; i < 3; i++) {
+                _category!.add(Articles(title: "TEST"));
+              }
+            }
+          });
+          update();
+        }
+      }
+    });
   }
 
   /// Getter [popularity]
@@ -53,7 +79,7 @@ class NewsController extends GetxController {
 
   /// Getter [category]
   List<Articles>? get category {
-    return _categoriy;
+    return _category;
   }
 
   /// Getter [news]
