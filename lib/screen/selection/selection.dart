@@ -27,7 +27,14 @@ class SelectionScreen extends StatelessWidget {
             if (controller.category == null) {
               controller
                   .fatchCategories(category!.title.toString().toLowerCase());
-              return const SizedBox();
+              return SizedBox(
+                height: MediaQuery.of(context).size.height - 150.0,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: ColorApp.color2,
+                  ),
+                ),
+              );
             }
             return SizedBox(
                 child: ListView.builder(
@@ -54,7 +61,7 @@ class SelectionScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'News',
+          category!.title!,
           style: TextStyle(
               color: ColorApp.color2,
               fontSize: 18.0,
@@ -66,6 +73,7 @@ class SelectionScreen extends StatelessWidget {
               color: ColorApp.main,
             ),
             onPressed: () {
+              Get.reload<NewsController>();
               Navigator.pop(context);
             }),
       ),
