@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_id/components/colors.dart';
+import 'package:news_id/components/time_format.dart';
 import 'package:news_id/screen/search/search.dart';
+import 'package:ntp/ntp.dart';
 
 import '../../app/controllers/news_controller.dart';
 import '../../app/databases/db_app.dart';
@@ -52,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: 25.0,
                     child: IconButton(
                         padding: const EdgeInsets.all(0),
-                        onPressed: () {},
+                        onPressed: () async {},
                         icon: const Icon(
                           Icons.arrow_drop_down,
                           size: 25.0,
