@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
@@ -38,13 +38,18 @@ class NewsController extends GetxController {
 
   /// Fatch [News]
   void fatchCategories(String category) async {
-    var url = Uri.parse(dotenv.get('API_URL') +
-        'everything?q=$category&from=2022-05-14&to=2022-05-14&apiKey=' +
-        dotenv.get('KEY'));
-    var response = await http.get(url);
-    if (response.statusCode == 200) {
-      _category = NewsModel.fromJson(json.decode(response.body)).articels;
+    try {
+      var url = Uri.parse(dotenv.get('API_URL') +
+          'everything?q=$category&from=2022-05-14&to=2022-05-14&apiKey=' +
+          dotenv.get('KEY'));
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        _category = NewsModel.fromJson(json.decode(response.body)).articels;
+      }
+
       update();
+    } catch (e) {
+      log(e.toString());
     }
   }
 

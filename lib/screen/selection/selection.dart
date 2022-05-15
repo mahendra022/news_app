@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_id/app/models/category_model.dart';
@@ -10,14 +12,16 @@ class SelectionScreen extends StatelessWidget {
 
   final CategoryModel? category;
 
-  content() {
+  content(context) {
     return Container(
         margin: const EdgeInsets.only(top: 10.0),
         child: GetBuilder<NewsController>(
           init: NewsController(),
-          initState: (_) {
-            Get.put(NewsController())
-                .fatchCategories(category!.title.toString().toLowerCase());
+          initState: (value) {
+            value.setState(() {
+              Get.put(NewsController())
+                  .fatchCategories(category!.title.toString().toLowerCase());
+            });
           },
           builder: (controller) {
             if (controller.category == null) {
@@ -69,7 +73,7 @@ class SelectionScreen extends StatelessWidget {
         child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Column(
-              children: [content()],
+              children: [content(context)],
             )),
       ),
     );

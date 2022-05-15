@@ -22,11 +22,11 @@ class DetailScreen extends StatelessWidget {
         ),
         articles!.author != null
             ? Text(
-                'Author : ' + articles!.author!,
+                'Author  :   ' + articles!.author!,
                 style: const TextStyle(
                     fontSize: 10.0,
                     color: Colors.black54,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w300),
               )
             : const SizedBox(
                 height: 10.0,

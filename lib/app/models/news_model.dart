@@ -1,5 +1,8 @@
 class NewsModel {
   List<Articles>? articels;
+
+  NewsModel({this.articels});
+
   NewsModel.fromJson(Map<String, dynamic> json) {
     if (json['articles'] != null) {
       articels = <Articles>[];
@@ -33,6 +36,19 @@ class Articles {
     urlToImage = json['urlToImage'];
     publishedAt = json['publishedAt'];
     content = json['content'];
+  }
+
+  /// this data from MAP file
+  factory Articles.fromMap(Map<String, dynamic> json) {
+    return Articles(
+        source: Source.fromJson(json['source']),
+        author: json['author'],
+        title: json['title'],
+        description: json['description'],
+        url: json['url'],
+        urlToImage: json['urlToImage'],
+        publishedAt: json['publishedAt'],
+        content: json['content']);
   }
 
   Map<String, dynamic> toJson() {

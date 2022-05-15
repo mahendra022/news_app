@@ -74,7 +74,7 @@ class PopularityTile extends StatelessWidget {
                 width: 180.0,
                 margin: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text(
-                  format2.format(DateTime.parse(news!.publishedAt!)),
+                  format1.format(DateTime.parse(news!.publishedAt!)),
                   textAlign: TextAlign.left,
                   style: const TextStyle(
                       color: Colors.white,
