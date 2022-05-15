@@ -11,6 +11,9 @@ class CategoryTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        Navigator.of(context).popUntil(
+          (route) => route.isFirst,
+        );
         Navigator.push(
           context,
           MaterialPageRoute(

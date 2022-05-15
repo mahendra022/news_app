@@ -12,12 +12,13 @@ class NewsController extends GetxController {
   List<Articles>? _popularty;
   List<Articles>? _category;
   List<Articles>? _news;
+  String time = '2022-05-15';
   ScrollController controller = ScrollController();
 
-  /// Fatch [by Popularity]
+  /// Fatch data [by Popularity]
   void fatchPopularity() async {
-    var times = await NTP.now();
-    var time = format4.format(times);
+    // var times = await NTP.now();
+    // var time = format4.format(times);
     var url = Uri.parse(dotenv.get('API_URL') +
         'everything?q=business&from=$time&to=$time&sortBy=popularity&apiKey=' +
         dotenv.get('KEY'));
@@ -42,8 +43,8 @@ class NewsController extends GetxController {
 
   /// Fatch data [By Categories]
   void fatchCategories(String category) async {
-    var times = await NTP.now();
-    var time = format4.format(times);
+    // var times = await NTP.now();
+    // var time = format4.format(times);
     try {
       var url = Uri.parse(dotenv.get('API_URL') +
           'everything?q=$category&from=$time&to=$time&apiKey=' +

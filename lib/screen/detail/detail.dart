@@ -70,11 +70,15 @@ class DetailScreen extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 20.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(
-          articles!.description!,
-          style: const TextStyle(
-              color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w500),
-        ),
+        articles!.description != null
+            ? Text(
+                articles!.description!,
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500),
+              )
+            : const SizedBox(),
         const SizedBox(
           height: 15.0,
         ),
