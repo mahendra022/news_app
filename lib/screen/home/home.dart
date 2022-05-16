@@ -10,9 +10,7 @@ import '../../components/widget/news_tile.dart';
 import '../../components/widget/popularity_tile.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
-  ScrollController scrollController =
-      ScrollController(initialScrollOffset: 0.0);
+  const HomeScreen({Key? key}) : super(key: key);
 
   topBar(context) {
     return Container(

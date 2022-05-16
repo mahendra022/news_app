@@ -1,9 +1,7 @@
 // ignore_for_file: invalid_use_of_protected_member
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:news_id/app/models/news_model.dart';
-import '../../app/controllers/news_controller.dart';
 import '../../components/colors.dart';
 import '../../components/widget/selection_tile.dart';
 

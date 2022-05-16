@@ -4,12 +4,13 @@ import 'package:news_id/app/controllers/search_controller.dart';
 import '../../app/databases/db_app.dart';
 import '../../components/colors.dart';
 import '../../components/widget/category_tile.dart';
+import 'components/news_search.dart';
 
+// ignore: must_be_immutable
 class SearchScreen extends StatelessWidget {
   SearchScreen({Key? key}) : super(key: key);
 
   final _controller = Get.put(SearchController());
-
   searchBar(context) {
     return Container(
       margin: const EdgeInsets.only(top: 80.0),
@@ -45,6 +46,9 @@ class SearchScreen extends StatelessWidget {
                     enableInteractiveSelection: false,
                     textAlignVertical: TextAlignVertical.center,
                     textInputAction: TextInputAction.done,
+                    onChanged: (value) {
+                      _controller.querySearch(value);
+                    },
                     onFieldSubmitted: (v) {
                       FocusScope.of(context).requestFocus(FocusNode());
                     },
@@ -133,6 +137,61 @@ class SearchScreen extends StatelessWidget {
     });
   }
 
+  sugestion() {
+    return Obx(() => _controller.controllerText.isNotEmpty
+        ? Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            margin: const EdgeInsets.only(top: 25.0),
+            child: ListView.builder(
+              padding: EdgeInsets.zero,
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemCount:
+                  _controller.items.length > 5 ? 5 : _controller.items.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).popUntil(
+                      (route) => route.isFirst,
+                    );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NewsSearchScreen(
+                                search: _controller.items[index],
+                              )),
+                    );
+                  },
+                  child: Container(
+                      padding: const EdgeInsets.only(bottom: 25.0),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            height: 20.0,
+                            width: 20.0,
+                            child: IconButton(
+                                padding: const EdgeInsets.all(0),
+                                onPressed: () async {},
+                                icon: const Icon(
+                                  Icons.search,
+                                  size: 20.0,
+                                  color: Colors.black26,
+                                )),
+                          ),
+                          const SizedBox(
+                            width: 10.0,
+                          ),
+                          Text(_controller.items[index]),
+                        ],
+                      )),
+                );
+              },
+            ),
+          )
+        : const SizedBox());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,7 +201,12 @@ class SearchScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [searchBar(context), categories(context), content()],
+                children: [
+                  searchBar(context),
+                  sugestion(),
+                  categories(context),
+                  content(),
+                ],
               )),
         ));
   }

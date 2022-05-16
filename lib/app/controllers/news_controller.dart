@@ -11,6 +11,7 @@ import 'package:ntp/ntp.dart';
 class NewsController extends GetxController {
   List<Articles>? _popularty;
   List<Articles>? _category;
+  List<Articles>? _everything;
   List<Articles>? _news;
   String time = '2022-05-15';
   ScrollController controller = ScrollController();
@@ -53,7 +54,24 @@ class NewsController extends GetxController {
       if (response.statusCode == 200) {
         _category = NewsModel.fromJson(json.decode(response.body)).articels;
       }
+      update();
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 
+  /// Fatch data [By Categories]
+  void fatchEverything(String input) async {
+    // var times = await NTP.now();
+    // var time = format4.format(times);
+    try {
+      var url = Uri.parse(dotenv.get('API_URL') +
+          'everything?q=$input&from=$time&to=$time&apiKey=' +
+          dotenv.get('KEY'));
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        _everything = NewsModel.fromJson(json.decode(response.body)).articels;
+      }
       update();
     } catch (e) {
       log(e.toString());
@@ -73,5 +91,10 @@ class NewsController extends GetxController {
   /// Getter [news]
   List<Articles>? get news {
     return _news;
+  }
+
+  /// Getter [everything]
+  List<Articles>? get everything {
+    return _everything;
   }
 }

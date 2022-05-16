@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:news_id/app/models/news_model.dart';
 import 'package:news_id/components/time_format.dart';
 import 'package:news_id/components/url_launcher.dart';

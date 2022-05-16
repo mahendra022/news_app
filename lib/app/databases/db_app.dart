@@ -41,3 +41,38 @@ List<CategoryModel>? dataCategory2 = [
   CategoryModel(
       title: 'Technology', icon: Icons.device_hub, color: Colors.orange[900]),
 ];
+
+List<String> suggestionsSearch = [
+  "Apple",
+  "Armidillo",
+  "Actual",
+  "Actuary",
+  "America",
+  "Argentina",
+  "Australia",
+  "Antarctica",
+  "Blueberry",
+  "Cheese",
+  "Danish",
+  "Eclair",
+  "Fudge",
+  "Granola",
+  "Hazelnut",
+  "Ice Cream",
+  "Jely",
+  "Kiwi Fruit",
+  "Lamb",
+  "Macadamia",
+  "Nachos",
+  "Oatmeal",
+  "Palm Oil",
+  "Quail",
+  "Rabbit",
+  "Salad",
+  "T-Bone Steak",
+  "Urid Dal",
+  "Vanilla",
+  "Waffles",
+  "Yam",
+  "Zest"
+];
