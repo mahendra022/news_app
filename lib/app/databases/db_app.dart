@@ -1,21 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/category_model.dart';
-import '../models/country_model.dart';
-
-List<CountryModel> dataCountry = [
-  CountryModel(
-      name: "us",
-      img:
-          "https://ilmupengetahuanumum.com/wp-content/uploads/2014/01/bendera-amerika-serikat.jpg"),
-  CountryModel(
-      name: "id",
-      img:
-          "https://ilmupengetahuanumum.com/wp-content/uploads/2013/12/Bendera-Indonesia.jpg"),
-  CountryModel(
-      name: "fr",
-      img:
-          "https://ilmupengetahuanumum.com/wp-content/uploads/2014/01/bendera-perancis.png")
-];
 
 List<CategoryModel> dataCategory1 = [
   CategoryModel(
@@ -47,6 +31,7 @@ List<String> suggestionsSearch = [
   "Armidillo",
   "Actual",
   "Actuary",
+  "Amazon",
   "America",
   "Argentina",
   "Australia",
@@ -56,6 +41,7 @@ List<String> suggestionsSearch = [
   "Danish",
   "Eclair",
   "Fudge",
+  "Google",
   "Granola",
   "Hazelnut",
   "Ice Cream",
@@ -63,6 +49,7 @@ List<String> suggestionsSearch = [
   "Kiwi Fruit",
   "Lamb",
   "Macadamia",
+  "Microsoft",
   "Nachos",
   "Oatmeal",
   "Palm Oil",
@@ -70,6 +57,7 @@ List<String> suggestionsSearch = [
   "Rabbit",
   "Salad",
   "T-Bone Steak",
+  "Tesla",
   "Urid Dal",
   "Vanilla",
   "Waffles",
