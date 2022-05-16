@@ -16,11 +16,13 @@ class HomeScreen extends StatelessWidget {
         margin: const EdgeInsets.only(top: 60.0, left: 20.0, right: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Navbar(),
-            PopularitySlider(),
-            CategoriesNews(),
-            ContentHome()
+          children: [
+            const Navbar(),
+            const PopularitySlider(),
+            CategoriesNews(
+              header: true,
+            ),
+            const ContentHome()
           ],
         ),
       )),

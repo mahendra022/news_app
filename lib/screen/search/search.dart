@@ -15,7 +15,9 @@ class SearchScreen extends StatelessWidget {
   categories(context) {
     return Obx(() {
       return _controller.controllerText.isEmpty
-          ? const CategoriesNews()
+          ? CategoriesNews(
+              header: false,
+            )
           : const SizedBox();
     });
   }

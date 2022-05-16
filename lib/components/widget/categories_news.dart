@@ -4,10 +4,11 @@ import '../../app/databases/db_app.dart';
 import '../colors.dart';
 import 'tile/category_tile.dart';
 
+// ignore: must_be_immutable
 class CategoriesNews extends StatelessWidget {
-  const CategoriesNews({
-    Key? key,
-  }) : super(key: key);
+  CategoriesNews({Key? key, required this.header}) : super(key: key);
+
+  bool? header;
 
   @override
   Widget build(BuildContext context) {
@@ -15,28 +16,31 @@ class CategoriesNews extends StatelessWidget {
       margin: const EdgeInsets.only(top: 20.0),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Hot topics',
-                style: TextStyle(
-                    color: ColorApp.color2,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w700),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'See all',
+          if (header!)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Hot topics',
                   style: TextStyle(
-                      color: Colors.black38,
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w600),
+                      color: ColorApp.color2,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w700),
                 ),
-              )
-            ],
-          ),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'See all',
+                    style: TextStyle(
+                        color: Colors.black38,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w600),
+                  ),
+                )
+              ],
+            )
+          else
+            const SizedBox(),
           SizedBox(
             height: 45.0,
             child: ListView.builder(
