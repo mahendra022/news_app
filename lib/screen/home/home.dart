@@ -1,26 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_id/components/colors.dart';
-import 'package:news_id/components/time_format.dart';
 import 'package:news_id/components/widget/all_news.dart';
 import 'package:news_id/screen/search/search.dart';
-import 'package:ntp/ntp.dart';
-
 import '../../app/controllers/news_controller.dart';
 import '../../app/databases/db_app.dart';
 import '../../components/widget/category_tile.dart';
 import '../../components/widget/news_tile.dart';
 import '../../components/widget/popularity_tile.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  HomeScreen({Key? key}) : super(key: key);
+  ScrollController scrollController =
+      ScrollController(initialScrollOffset: 0.0);
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  topBar() {
+  topBar(context) {
     return Container(
       margin: const EdgeInsets.only(top: 5.0),
       child: Column(
@@ -201,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  content() {
+  content(context) {
     return GetBuilder<NewsController>(
         init: NewsController(),
         initState: (_) {
@@ -273,7 +267,12 @@ class _HomeScreenState extends State<HomeScreen> {
         margin: const EdgeInsets.only(top: 60.0, left: 20.0, right: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [topBar(), slidebar(), categories(), content()],
+          children: [
+            topBar(context),
+            slidebar(),
+            categories(),
+            content(context)
+          ],
         ),
       )),
     );
