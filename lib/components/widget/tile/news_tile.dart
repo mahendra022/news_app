@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_id/components/colors.dart';
-import '../../app/models/news_model.dart';
-import '../../screen/detail/detail.dart';
-import '../time_format.dart';
+import '../../../app/models/news_model.dart';
+import '../../../screen/detail/detail.dart';
+import '../../time_format.dart';
 
 class NewsTile extends StatelessWidget {
   const NewsTile({Key? key, this.news}) : super(key: key);

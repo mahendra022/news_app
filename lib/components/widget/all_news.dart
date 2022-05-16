@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_id/app/models/news_model.dart';
 import '../../components/colors.dart';
-import '../../components/widget/selection_tile.dart';
+import 'tile/selection_tile.dart';
 
 class AllNews extends StatelessWidget {
   const AllNews({Key? key, this.articles}) : super(key: key);

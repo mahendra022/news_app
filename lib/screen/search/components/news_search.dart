@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../app/controllers/news_controller.dart';
 import '../../../components/colors.dart';
-import '../../../components/widget/selection_tile.dart';
+import '../../../components/widget/tile/selection_tile.dart';
 
 class NewsSearchScreen extends StatelessWidget {
   const NewsSearchScreen({Key? key, required this.search}) : super(key: key);
