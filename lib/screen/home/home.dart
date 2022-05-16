@@ -18,44 +18,12 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Explore',
-                style: TextStyle(
-                    color: ColorApp.color2,
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold),
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    height: 20.0,
-                    width: 20.0,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100.0),
-                      child: Image.network(
-                        'https://ilmupengetahuanumum.com/wp-content/uploads/2014/01/bendera-amerika-serikat.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  const Text('US'),
-                  SizedBox(
-                    height: 25.0,
-                    width: 25.0,
-                    child: IconButton(
-                        padding: const EdgeInsets.all(0),
-                        onPressed: () async {},
-                        icon: const Icon(
-                          Icons.arrow_drop_down,
-                          size: 25.0,
-                        )),
-                  )
-                ],
-              )
-            ],
+          Text(
+            'Explore',
+            style: TextStyle(
+                color: ColorApp.color2,
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 15.0,

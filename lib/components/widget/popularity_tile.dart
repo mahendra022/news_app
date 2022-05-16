@@ -21,7 +21,7 @@ class PopularityTile extends StatelessWidget {
         );
       },
       child: Container(
-        width: 200,
+        width: 200.0,
         margin: const EdgeInsets.only(right: 15.0),
         child: Stack(
           children: [
@@ -57,7 +57,7 @@ class PopularityTile extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
                       letterSpacing: 0.9,
-                      fontSize: 13.0,
+                      fontSize: 12.0,
                       shadows: [
                         Shadow(
                             // bottomLeft
