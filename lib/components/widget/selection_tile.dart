@@ -101,10 +101,10 @@ class SelectionTile extends StatelessWidget {
                     errorBuilder: ((context, error, stackTrace) {
                       return Image.network(
                         'https://www.ryanhart.org/img/featured_journal_empty.jpg',
-                        fit: BoxFit.fitHeight,
+                        fit: BoxFit.cover,
                       );
                     }),
-                    fit: BoxFit.fitHeight,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),

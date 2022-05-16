@@ -145,6 +145,7 @@ class SearchScreen extends StatelessWidget {
                               padding: EdgeInsets.zero,
                               physics: const BouncingScrollPhysics(),
                               shrinkWrap: true,
+                              reverse: true,
                               itemCount: controller.getHistory!.length > 8
                                   ? 8
                                   : controller.getHistory!.length,
