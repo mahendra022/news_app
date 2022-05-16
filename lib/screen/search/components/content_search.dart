@@ -48,7 +48,6 @@ class ContentSearch extends StatelessWidget {
                                   ? 6
                                   : controller.getHistory!.length,
                               itemBuilder: (context, index) {
-                                print(controller.getHistory);
                                 return GestureDetector(
                                   onTap: () async {
                                     Navigator.of(context).popUntil(

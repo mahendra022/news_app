@@ -29,13 +29,13 @@ class Articles {
 
   Articles.fromJson(Map<String, dynamic> json) {
     source = Source.fromJson(json['source']);
-    author = json['author'];
-    title = json['title'];
-    description = json['description'];
-    url = json['url'];
-    urlToImage = json['urlToImage'];
-    publishedAt = json['publishedAt'];
-    content = json['content'];
+    author = json['author'] ?? '';
+    title = json['title'] ?? '';
+    description = json['description'] ?? '';
+    url = json['url'] ?? '';
+    urlToImage = json['urlToImage'] ?? '';
+    publishedAt = json['publishedAt'] ?? '';
+    content = json['content'] ?? '';
   }
 
   /// this data from MAP file
