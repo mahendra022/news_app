@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../app/controllers/search_controller.dart';
 import '../../../components/colors.dart';
 import 'news_search.dart';
@@ -45,12 +44,16 @@ class ContentSearch extends StatelessWidget {
                               physics: const BouncingScrollPhysics(),
                               shrinkWrap: true,
                               reverse: true,
-                              itemCount: controller.getHistory!.length > 8
-                                  ? 8
+                              itemCount: controller.getHistory!.length > 6
+                                  ? 6
                                   : controller.getHistory!.length,
                               itemBuilder: (context, index) {
+                                print(controller.getHistory);
                                 return GestureDetector(
                                   onTap: () async {
+                                    Navigator.of(context).popUntil(
+                                      (route) => route.isFirst,
+                                    );
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -59,11 +62,14 @@ class ContentSearch extends StatelessWidget {
                                                 search: controller
                                                     .getHistory![index],
                                               )),
-                                    );
+                                    ).then((value) {
+                                      _controller.saveSearch(
+                                          controller.getHistory![index]);
+                                    });
                                   },
                                   child: Container(
                                       padding:
-                                          const EdgeInsets.only(bottom: 10.0),
+                                          const EdgeInsets.only(bottom: 15.0),
                                       child: Row(
                                         children: [
                                           SizedBox(

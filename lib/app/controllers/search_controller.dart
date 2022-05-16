@@ -44,10 +44,18 @@ class SearchController extends GetxController {
     try {
       if (list != null) {
         if (list.contains(value)) {
-          log('item is already');
-        } else {
+          list.remove(value);
           list.add(value);
           await preferences.setStringList("history_search", list);
+        } else {
+          if (list.length < 6) {
+            list.add(value);
+            await preferences.setStringList("history_search", list);
+          } else {
+            list.removeAt(0);
+            list.add(value);
+            await preferences.setStringList("history_search", list);
+          }
         }
       } else {
         await preferences.setStringList("history_search", <String>[value]);
@@ -55,6 +63,7 @@ class SearchController extends GetxController {
     } catch (e) {
       log(e.toString());
     }
+    update();
   }
 
   /// feach history Search
