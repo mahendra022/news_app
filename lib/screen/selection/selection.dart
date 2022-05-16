@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:news_id/app/models/category_model.dart';
 import '../../app/controllers/news_controller.dart';
 import '../../components/colors.dart';
-import '../../components/widget/selection_tile.dart';
+import '../../components/widget/tile/selection_tile.dart';
 
 class SelectionScreen extends StatelessWidget {
   const SelectionScreen({Key? key, this.category}) : super(key: key);

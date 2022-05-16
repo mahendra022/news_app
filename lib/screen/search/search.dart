@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:news_id/app/controllers/search_controller.dart';
 import '../../app/databases/db_app.dart';
 import '../../components/colors.dart';
-import '../../components/widget/category_tile.dart';
+import '../../components/widget/tile/category_tile.dart';
 import 'components/news_search.dart';
 
 // ignore: must_be_immutable
