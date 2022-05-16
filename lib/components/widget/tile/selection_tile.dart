@@ -96,8 +96,7 @@ class SelectionTile extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
                   child: Image.network(
-                    news!.urlToImage ??
-                        'https://www.ryanhart.org/img/featured_journal_empty.jpg',
+                    news!.urlToImage!,
                     errorBuilder: ((context, error, stackTrace) {
                       return Image.network(
                         'https://www.ryanhart.org/img/featured_journal_empty.jpg',

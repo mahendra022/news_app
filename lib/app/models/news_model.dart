@@ -33,7 +33,8 @@ class Articles {
     title = json['title'] ?? '';
     description = json['description'] ?? '';
     url = json['url'] ?? '';
-    urlToImage = json['urlToImage'] ?? '';
+    urlToImage = json['urlToImage'] ??
+        'https://www.ryanhart.org/img/featured_journal_empty.jpg';
     publishedAt = json['publishedAt'] ?? '';
     content = json['content'] ?? '';
   }
