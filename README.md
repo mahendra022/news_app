@@ -1,15 +1,10 @@
-# news_id
+# NEWS APP
+**Made with flutter**
+**and we used Getx for state management**
+# we use https://newsapi.org/v2/ for API news
 
-A new Flutter project.
+![Mockup](https://user-images.githubusercontent.com/47637830/171290605-26a0b195-3a26-40c2-a9f3-81be2b954c77.png)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
